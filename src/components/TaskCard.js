@@ -8,8 +8,6 @@ const TaskCard = ({ data, handleEdit, handleDelete }) => {
   const [editTask, setEditTask] = useState(false);
   const [deleteTask, setDeleteTask] = useState(false);
 
-  console.log(data);
-
   return (
     <>
       {

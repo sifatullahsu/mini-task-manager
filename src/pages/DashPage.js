@@ -144,7 +144,7 @@ const DashPage = () => {
 
   return (
     <div>
-      <div className='grid grid-cols-4 gap-5'>
+      <div className='grid grid-cols-1 md:grid-cols-4 gap-5'>
         <div>
           <DashHeading text='Add new task'></DashHeading>
           <AddTaskForm handleAddTask={handleAddTask}></AddTaskForm>
