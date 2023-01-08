@@ -56,6 +56,7 @@ const EditTaskModal = ({ editTask, setEditTask, handleEdit }) => {
                 // isClearable={true}
                 loadOptions={promiseOptions}
                 defaultValue={{ value: `${editTask?.assigned_to}, ${editTask?.assigned_name}`, label: editTask?.assigned_name }}
+                className='rr-async-select'
               />
             </div>
 

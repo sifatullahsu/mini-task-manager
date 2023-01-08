@@ -3,10 +3,19 @@ import { FaDotCircle, FaRegEdit, FaTrash } from 'react-icons/fa';
 import DeleteTaskModal from './DeleteTaskModal';
 import EditTaskModal from './EditTaskModal';
 
-const TaskCard = ({ data, handleEdit, handleDelete }) => {
+const TaskCard = ({ data, handleEdit, handleDelete, type }) => {
 
   const [editTask, setEditTask] = useState(false);
   const [deleteTask, setDeleteTask] = useState(false);
+
+  let color = 'text-info';
+
+  if (type === '2') {
+    color = 'text-warning';
+  }
+  else if (type === '3') {
+    color = 'text-error';
+  }
 
   return (
     <>
@@ -16,7 +25,9 @@ const TaskCard = ({ data, handleEdit, handleDelete }) => {
             <div key={task.id} className='bg-neutral border border-secondary mb-3'>
               <div className='flex justify-between px-4 py-2 border-b border-secondary'>
                 <span>
-                  <FaDotCircle className='inline-block mr-2 mb-1 text-[13px] text-info'></FaDotCircle>Task: {index + 1}
+                  <FaDotCircle
+                    className={`inline-block mr-2 mb-1 text-[13px] ${color}`}
+                  ></FaDotCircle>Task: {index + 1}
                 </span>
                 <span>
                   <label htmlFor="task-edit-modal">

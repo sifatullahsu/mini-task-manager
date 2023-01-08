@@ -1,0 +1,13 @@
+.rr-async-select .css-13cymwt-control:hover,
+.rr-async-select .css-13cymwt-control,
+.rr-async-select .css-t3ipsp-control {
+  @apply bg-transparent border-secondary text-white;
+}
+
+.rr-async-select .css-166bipr-Input {
+  @apply text-white;
+}
+
+.rr-async-select .css-t3ipsp-control:hover {
+  @apply border-secondary;
+}

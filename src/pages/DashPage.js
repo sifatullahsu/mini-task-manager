@@ -156,15 +156,15 @@ const DashPage = () => {
         </div>
         <div>
           <DashHeading text='Normal Priority'></DashHeading>
-          <TaskCard data={priorityNormal.reverse()} handleEdit={handleEdit} handleDelete={handleDelete}></TaskCard>
+          <TaskCard data={priorityNormal.reverse()} handleEdit={handleEdit} handleDelete={handleDelete} type='1'></TaskCard>
         </div>
         <div>
           <DashHeading text='Mid Priority'></DashHeading>
-          <TaskCard data={priorityMid.reverse()} handleEdit={handleEdit} handleDelete={handleDelete}></TaskCard>
+          <TaskCard data={priorityMid.reverse()} handleEdit={handleEdit} handleDelete={handleDelete} type='2'></TaskCard>
         </div>
         <div>
           <DashHeading text='High Priority'></DashHeading>
-          <TaskCard data={priorityHigh.reverse()} handleEdit={handleEdit} handleDelete={handleDelete}></TaskCard>
+          <TaskCard data={priorityHigh.reverse()} handleEdit={handleEdit} handleDelete={handleDelete} type='3'></TaskCard>
         </div>
       </div>
     </div>
