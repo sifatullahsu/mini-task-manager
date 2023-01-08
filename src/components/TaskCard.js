@@ -8,6 +8,8 @@ const TaskCard = ({ data, handleEdit, handleDelete }) => {
   const [editTask, setEditTask] = useState(false);
   const [deleteTask, setDeleteTask] = useState(false);
 
+  console.log(data);
+
   return (
     <>
       {
@@ -39,6 +41,10 @@ const TaskCard = ({ data, handleEdit, handleDelete }) => {
             </div>
           )
         })
+      }
+      {
+        data.length === 0 &&
+        <p>No data found..</p>
       }
       {
         editTask &&

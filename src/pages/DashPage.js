@@ -1,14 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import AddTaskForm from '../components/AddTaskForm';
 import DashHeading from '../components/DashHeading';
+import Search from '../components/Search';
 import TaskCard from '../components/TaskCard';
 
 const DashPage = () => {
 
   const apiKey = process.env.REACT_APP_TASK_API_KEY;
+  const [searchTask, setSearchTask] = useState(false);
 
   const { data: tasks = [], refetch } = useQuery({
     queryKey: ['tasks'],
@@ -25,9 +27,22 @@ const DashPage = () => {
     }
   });
 
-  const priorityNormal = tasks?.tasks ? tasks.tasks.filter(task => task.priority === '1') : [];
-  const priorityMid = tasks?.tasks ? tasks.tasks.filter(task => task.priority === '2') : [];
-  const priorityHigh = tasks?.tasks ? tasks.tasks.filter(task => task.priority === '3') : [];
+  const search = searchTask ? tasks.tasks.filter(task => task.message.includes(searchTask)) : false;
+
+  let priorityNormal = [];
+  let priorityMid = [];
+  let priorityHigh = [];
+
+  if (search) {
+    priorityNormal = search.filter(task => task.priority === '1');
+    priorityMid = search.filter(task => task.priority === '2');
+    priorityHigh = search.filter(task => task.priority === '3');
+  }
+  else if (tasks?.tasks) {
+    priorityNormal = tasks.tasks.filter(task => task.priority === '1');
+    priorityMid = tasks.tasks.filter(task => task.priority === '2');
+    priorityHigh = tasks.tasks.filter(task => task.priority === '3');
+  }
 
 
   const handleEdit = (event) => {
@@ -133,6 +148,11 @@ const DashPage = () => {
         <div>
           <DashHeading text='Add new task'></DashHeading>
           <AddTaskForm handleAddTask={handleAddTask}></AddTaskForm>
+
+          <div className='my-10'></div>
+
+          <DashHeading text='Search Tasks'></DashHeading>
+          <Search searchTask={searchTask} setSearchTask={setSearchTask}></Search>
         </div>
         <div>
           <DashHeading text='Normal Priority'></DashHeading>
